@@ -26,11 +26,9 @@ namespace Tasks
         * Desenvolma um método que retorne a soma total das quantidades de estoque dos itens
         * Dica: A classe Repository possui as informções dos Products
         */
-        public static int GetSumStock() {
-            Repository repository = new Repository();
-            int total = repository.Products.Sum(a => a.Stock.Quantity);
-            return total;
-        }
+        public static int GetSumStock() => new Repository().Products.Sum(a => a.Stock.Quantity);
+
+        
 
         /*
          * Crie um método que verifique, dado Id e quantidade solicitada do produto
@@ -38,13 +36,6 @@ namespace Tasks
          * Dica: A classe Repository possui as informções dos Products
          * 
          */
-        public static bool IsSalePossible(int productId, int orderQuantity) {
-            Repository repository = new Repository();
-            bool teste = repository.Products.Any(product => product.Stock.ProductId == productId && product.Stock.Quantity >= orderQuantity);
-            if (teste)
-                return true;
-            else
-                return false;
-        }
+        public static bool IsSalePossible(int productId, int orderQuantity) => new Repository().Products.Any(product => product.Stock.ProductId == productId && product.Stock.Quantity >= orderQuantity);
     }
 }
